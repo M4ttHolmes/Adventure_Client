@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 
 const styles = {
     navLink: {
-        color: "white",
-        textDecoration: "none",
         marginRight: "3em",
     }
 }
@@ -15,6 +13,7 @@ const styles = {
 type AuthProps = {
     sessionToken: string | undefined | null
     clearLocalStorage: () => void
+    userRole: string
 }
 
 
@@ -22,9 +21,12 @@ const Navigation = (props: AuthProps) => {
     return (
         <Navbar color="dark" dark expand="md">
             <Nav className="ml-auto">
-                <NavItem>
-                    <Link to="/admin" style={styles.navLink}><Button color="warning" outline>Admin Only</Button></Link>
-                </NavItem>
+                {props.userRole === "Admin" ? 
+                    <NavItem>
+                        <Link to="/admin" style={styles.navLink}><Button color="warning" outline>Admin Only</Button></Link>
+                    </NavItem>
+                : null
+                }
                 <NavItem>
                     <Link to="/adventure" style={styles.navLink}><Button color="info" outline>Adventures</Button></Link>
                 </NavItem>

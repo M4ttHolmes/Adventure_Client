@@ -12,6 +12,7 @@ type AuthState = {
 
 type AuthProps = {
     updateLocalStorage: (newToken: string) => void
+    updateRole: (role: string) => void
 }
 
 export default class Auth extends Component<AuthProps, AuthState> {
@@ -118,6 +119,7 @@ export default class Auth extends Component<AuthProps, AuthState> {
         .then(response => response.json())
         .then(json => {
             this.props.updateLocalStorage(json.sessionToken)
+            this.props.updateRole(json.user.role)
         })
         .catch(err => console.log(err))
     }

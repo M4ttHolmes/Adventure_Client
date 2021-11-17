@@ -4,6 +4,7 @@ import Main from "../site/Main"
 import { BrowserRouter as Router } from "react-router-dom";
 
 type TokenType = {
+    role: string
     sessionToken: string | undefined | null
 }
 
@@ -12,6 +13,7 @@ export default class Token extends Component<{}, TokenType> {
         super(props)
         this.state = {
             sessionToken: undefined,
+            role: ""
         }
         this.updateLocalStorage = this.updateLocalStorage.bind(this)
     }
@@ -21,6 +23,10 @@ export default class Token extends Component<{}, TokenType> {
             this.setState({sessionToken: localStorage.getItem("token")})
         }
     });
+
+    updateRole = (role: string) => {
+        this.setState({role: role});
+    };
 
     clearLocalStorage = () =>{
         localStorage.clear();
@@ -38,8 +44,8 @@ export default class Token extends Component<{}, TokenType> {
  
     viewConductor = () => {
         return this.state.sessionToken !== undefined ?
-            <Main sessionToken={this.state.sessionToken} clearLocalStorage={this.clearLocalStorage} /> : 
-            <Auth updateLocalStorage={this.updateLocalStorage}/>
+            <Main userRole={this.state.role} sessionToken={this.state.sessionToken} clearLocalStorage={this.clearLocalStorage} /> : 
+            <Auth updateRole={this.updateRole} updateLocalStorage={this.updateLocalStorage}/>
     }
     
     render(){
