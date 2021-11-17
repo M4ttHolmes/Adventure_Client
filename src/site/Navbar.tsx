@@ -1,9 +1,18 @@
 import React from "react";
 
-const Navbar = () => {
+
+type AuthProps = {
+    sessionToken: string
+    clearLocalStorage: () => void
+}
+
+
+
+const Navbar = (props: AuthProps) => {
     return(
         <div>
             Navbar Stuff
+            <button onClick={props.clearLocalStorage}>Logout</button>
         </div>
     )
 }
