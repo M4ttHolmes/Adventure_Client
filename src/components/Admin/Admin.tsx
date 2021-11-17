@@ -1,7 +1,13 @@
 import React, {Component} from "react";
 import DisplayAdmin from "./DisplayAdmin";
 
-export default class Admin extends Component {
+
+type AuthProps = {
+    sessionToken: string | undefined | null
+    userRole: string
+}
+
+export default class Admin extends Component<AuthProps, {}> {
 
 
 

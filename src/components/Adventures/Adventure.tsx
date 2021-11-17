@@ -2,8 +2,12 @@ import { render } from "@testing-library/react"
 import React, { Component } from "react"
 import DisplayAdventure from "./DisplayAdventure"
 
-export default class Adventure extends Component {
+type AuthProps = {
+    sessionToken: string | undefined | null
+}
 
+export default class Adventure extends Component<AuthProps, {}> {
+    
 
 
     render(){
