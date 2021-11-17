@@ -1,0 +1,136 @@
+import React, { Component } from "react";
+import DisplayAuth from "./DisplayAuth";
+
+type AuthState = {
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+    role: string,
+    login: boolean,
+};
+
+type AuthProps = {
+    updateLocalStorage: (newToken: string) => void
+}
+
+export default class Auth extends Component<AuthProps, AuthState> {
+    constructor(props: AuthProps){
+        super(props)
+        this.state = {
+            email: "",
+            password: "",
+            firstName: "",
+            lastName: "",
+            role: "User",
+            login: true,
+        }
+    }
+
+    title = () => {
+        return !this.state.login ? "Sign Up" : "Log In"
+    }
+
+    logSignButton = () => {
+        return !this.state.login ? 'Go Back To Sign In' : 'Sign Up'
+    }
+
+    
+    submitButton = () => {
+        return !this.state.login ? 'Create User' : 'Login'
+    }
+
+    loginToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        this.setState({
+            login: !this.state.login,
+            email: "",
+            password: "",
+            firstName: "",
+            lastName: ""
+        })
+    }
+
+    registerFields = () => !this.state.login ?
+    (
+        <div>
+            <label htmlFor="firstName"><strong>First Name:</strong></label>
+            <br/>
+            <input required type='text' id="firstName" placeholder="Your First Name" value={this.state.firstName} onChange={(e) => this.setState({firstName: (e.target.value)})} />
+            <br/>
+            <label htmlFor="lastName"><strong>Last Name:</strong></label>
+            <br/>
+            <input required type='text' id="lastName" placeholder="Your Last Name" value={this.state.lastName} onChange={(e) => this.setState({lastName: (e.target.value)})} />
+        </div>
+    ) : null;
+
+
+    handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        let reqBody = this.state.login ?
+        {
+            user: {
+                email: this.state.email,
+                password: this.state.password,
+            }
+        } :
+        {
+            user: {
+                email: this.state.email,
+                password: this.state.password,
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                role: this.state.role
+            }
+        }
+
+        let url = this.state.login ?
+        `http://localhost:5000/user/login` :
+        `http://localhost:5000/user/register`;
+
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(reqBody),
+            headers: new Headers({
+                'Content-Type' : 'application/json'
+            })
+        })
+        .then(response => response.json())
+        .then(json => {
+            this.props.updateLocalStorage(json.sessionToken)
+        })
+        .catch(err => console.log(err))
+    }
+
+
+    render() {
+        return(
+            <div>
+                {/* <DisplayAuth />  */}
+                <div>
+                    <form id="Login" onSubmit={this.handleSubmit}>
+                        <hr />
+                        <h1 >{this.title()}</h1>
+                        <hr />
+                        <label htmlFor="email"><strong>Email:</strong></label>
+                        <br/>
+                        <input required type="email" id="email" placeholder="Ex: user@email.com" value={this.state.email} onChange={(e) => this.setState({email: (e.target.value)})} />
+                        <br/>
+                        <label htmlFor="password"><strong>Password:</strong></label>
+                        <br/>
+                        <input required type="password" id="password" placeholder="Enter Password" value={this.state.password} onChange={(e) => this.setState({password: (e.target.value)})} />
+                        <br/>
+                        {this.registerFields()}
+                        <br/>
+                        <button type="submit" >{this.submitButton()} </button>
+                        <br/>
+                        <br/>
+                        <button onClick={this.loginToggle}>{this.logSignButton()}</button>
+                    </form>
+                </div>
+            </div>
+        )
+    }
+
+}
