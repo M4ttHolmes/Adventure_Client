@@ -12,6 +12,7 @@ type AuthState = {
 
 type AuthProps = {
     updateLocalStorage: (newToken: string) => void
+    updateRole: (role: string) => void
 }
 
 export default class Auth extends Component<AuthProps, AuthState> {
@@ -31,7 +32,7 @@ export default class Auth extends Component<AuthProps, AuthState> {
         return !this.state.login ? "Sign Up" : "Log In"
     }
 
-    logSignButton = () => {
+    loginSignupButton = () => {
         return !this.state.login ? 'Go Back To Sign In' : 'Sign Up'
     }
 
@@ -51,9 +52,17 @@ export default class Auth extends Component<AuthProps, AuthState> {
         })
     }
 
-    registerFields = () => !this.state.login ?
+    fields = () => !this.state.login ?
     (
         <div>
+            <label htmlFor="email"><strong>Email:</strong></label>
+            <br/>
+            <input required type="email" id="email" placeholder="Ex: user@email.com" value={this.state.email} onChange={(e) => this.setState({email: (e.target.value)})} />
+            <br/>
+            <label htmlFor="password"><strong>Password:</strong></label>
+            <br/>
+            <input required type="password" id="password" placeholder="Enter Password" value={this.state.password} onChange={(e) => this.setState({password: (e.target.value)})} />
+            <br/>
             <label htmlFor="firstName"><strong>First Name:</strong></label>
             <br/>
             <input required type='text' id="firstName" placeholder="Your First Name" value={this.state.firstName} onChange={(e) => this.setState({firstName: (e.target.value)})} />
@@ -62,7 +71,18 @@ export default class Auth extends Component<AuthProps, AuthState> {
             <br/>
             <input required type='text' id="lastName" placeholder="Your Last Name" value={this.state.lastName} onChange={(e) => this.setState({lastName: (e.target.value)})} />
         </div>
-    ) : null;
+    ) : (
+        <div>
+            <label htmlFor="email"><strong>Email:</strong></label>
+            <br/>
+            <input required type="email" id="email" placeholder="Ex: user@email.com" value={this.state.email} onChange={(e) => this.setState({email: (e.target.value)})} />
+            <br/>
+            <label htmlFor="password"><strong>Password:</strong></label>
+            <br/>
+            <input required type="password" id="password" placeholder="Enter Password" value={this.state.password} onChange={(e) => this.setState({password: (e.target.value)})} />
+            <br/>
+        </div>
+    );
 
 
     handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -99,6 +119,7 @@ export default class Auth extends Component<AuthProps, AuthState> {
         .then(response => response.json())
         .then(json => {
             this.props.updateLocalStorage(json.sessionToken)
+            this.props.updateRole(json.user.role)
         })
         .catch(err => console.log(err))
     }
@@ -107,28 +128,19 @@ export default class Auth extends Component<AuthProps, AuthState> {
     render() {
         return(
             <div>
-                {/* <DisplayAuth />  */}
-                <div>
-                    <form id="Login" onSubmit={this.handleSubmit}>
-                        <hr />
-                        <h1 >{this.title()}</h1>
-                        <hr />
-                        <label htmlFor="email"><strong>Email:</strong></label>
-                        <br/>
-                        <input required type="email" id="email" placeholder="Ex: user@email.com" value={this.state.email} onChange={(e) => this.setState({email: (e.target.value)})} />
-                        <br/>
-                        <label htmlFor="password"><strong>Password:</strong></label>
-                        <br/>
-                        <input required type="password" id="password" placeholder="Enter Password" value={this.state.password} onChange={(e) => this.setState({password: (e.target.value)})} />
-                        <br/>
-                        {this.registerFields()}
-                        <br/>
-                        <button type="submit" >{this.submitButton()} </button>
-                        <br/>
-                        <br/>
-                        <button onClick={this.loginToggle}>{this.logSignButton()}</button>
-                    </form>
-                </div>
+                <DisplayAuth 
+                    email={this.state.email}
+                    password={this.state.password}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    login={this.state.login}
+                    handleSubmit={this.handleSubmit}
+                    title={this.title}
+                    loginToggle={this.loginToggle}
+                    submitButton={this.submitButton}
+                    fields={this.fields}
+                    loginSignupButton={this.loginSignupButton}
+                /> 
             </div>
         )
     }

@@ -1,19 +1,33 @@
 import React, {Component} from "react";
 import Auth from "./Auth/Auth"
+import Main from "../site/Main"
+import { BrowserRouter as Router } from "react-router-dom";
 
 type TokenType = {
-    sessionToken: string | undefined
+    role: string
+    sessionToken: string | undefined | null
 }
 
 export default class Token extends Component<{}, TokenType> {
     constructor(props: TokenType) {
         super(props)
         this.state = {
-            sessionToken: ""
+            sessionToken: undefined,
+            role: ""
         }
         this.updateLocalStorage = this.updateLocalStorage.bind(this)
     }
     
+    componentDidMount = (() => {
+        if(localStorage.getItem("token")){
+            this.setState({sessionToken: localStorage.getItem("token")})
+        }
+    });
+
+    updateRole = (role: string) => {
+        this.setState({role: role});
+    };
+
     clearLocalStorage = () =>{
         localStorage.clear();
         this.setState({
@@ -28,16 +42,18 @@ export default class Token extends Component<{}, TokenType> {
         })
     };
  
-    // viewConductor = () => {
-    //     return this.state.sessionToken !== undefined ?
-    // <Navbar sessionToken={this.state.sessionToken} clearLocalStorage={this.clearLocalStorage} /> : 
-    //     <Auth updateLocalStorage={this.updateLocalStorage}/>
-    // }
+    viewConductor = () => {
+        return this.state.sessionToken !== undefined ?
+            <Main userRole={this.state.role} sessionToken={this.state.sessionToken} clearLocalStorage={this.clearLocalStorage} /> : 
+            <Auth updateRole={this.updateRole} updateLocalStorage={this.updateLocalStorage}/>
+    }
     
     render(){
         return(
             <div>
-                <Auth updateLocalStorage={this.updateLocalStorage}/>
+                <Router>
+                    {this.viewConductor()}
+                </Router>
             </div>
         )
     }
