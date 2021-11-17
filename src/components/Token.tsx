@@ -1,21 +1,27 @@
 import React, {Component} from "react";
 import Auth from "./Auth/Auth"
-import Navbar from "../site/Navbar"
+import Main from "../site/Main"
 import { BrowserRouter as Router } from "react-router-dom";
 
 type TokenType = {
-    sessionToken: string | undefined
+    sessionToken: string | undefined | null
 }
 
 export default class Token extends Component<{}, TokenType> {
     constructor(props: TokenType) {
         super(props)
         this.state = {
-            sessionToken: undefined
+            sessionToken: undefined,
         }
         this.updateLocalStorage = this.updateLocalStorage.bind(this)
     }
     
+    componentDidMount = (() => {
+        if(localStorage.getItem("token")){
+            this.setState({sessionToken: localStorage.getItem("token")})
+        }
+    });
+
     clearLocalStorage = () =>{
         localStorage.clear();
         this.setState({
@@ -32,7 +38,7 @@ export default class Token extends Component<{}, TokenType> {
  
     viewConductor = () => {
         return this.state.sessionToken !== undefined ?
-            <Navbar sessionToken={this.state.sessionToken} clearLocalStorage={this.clearLocalStorage} /> : 
+            <Main sessionToken={this.state.sessionToken} clearLocalStorage={this.clearLocalStorage} /> : 
             <Auth updateLocalStorage={this.updateLocalStorage}/>
     }
     
