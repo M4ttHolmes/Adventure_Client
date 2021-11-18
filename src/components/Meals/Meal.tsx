@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import DisplayMeal from "./DisplayMeal"
 
 
-export default class Meal extends Component {
+type AuthProps = {
+    sessionToken: string | undefined | null
+}
+
+
+export default class Meal extends Component<AuthProps, {}> {
 
 
 
