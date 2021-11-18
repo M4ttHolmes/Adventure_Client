@@ -9,10 +9,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 type AuthProps = {
     sessionToken: string | undefined | null
     clearLocalStorage: () => void
-    userRole: string
+    userRole: string | null
 }
-
-
 
 const Navbar = (props: AuthProps) => {
     return(
