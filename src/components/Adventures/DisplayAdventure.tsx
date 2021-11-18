@@ -4,8 +4,11 @@ import { Row, Button, Card, CardBody, CardText, CardSubtitle } from 'reactstrap'
 type AdvProps = {
     adventures: []
     fetchMyAdventures: () => void
+    deleteAdventure: (advId: string) => void
     sessionToken: string | undefined | null
     createOn: () => void
+    updateOn: () => void
+    editUpdateAdventure: (id: AdventureDetails) => void
 }
 
 type AdventureDetails = {
@@ -15,6 +18,8 @@ type AdventureDetails = {
     location: string
     rating: number
     thoughts: string
+    private: boolean
+    id: string
 }
 
 const DisplayAdventure = (props: AdvProps) => {
@@ -35,8 +40,8 @@ const DisplayAdventure = (props: AdvProps) => {
                                 <CardText><strong>Location:</strong> {adv.location}</CardText>
                                 <CardText><strong>Thoughts:</strong> {adv.thoughts}</CardText>
                                 <CardText><strong>Rating:</strong> {adv.rating}</CardText>
-                                <Button className="btn editBtn" type="button" >Edit Adventure</Button>
-                                <Button className="btn btn-danger deleteBtn" type="button">Delete Adventure</Button>
+                                <Button className="btn editBtn" type="button" onClick={() => {props.editUpdateAdventure(adv); props.updateOn()}}>Edit Adventure</Button>
+                                <Button className="btn btn-danger deleteBtn" type="button" onClick={() => {props.deleteAdventure(adv.id)}}>Delete Adventure</Button>
                             </CardBody>
                         </Card>
                     )
