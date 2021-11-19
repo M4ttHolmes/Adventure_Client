@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import DisplayMeal from "./DisplayMeal"
 import CreateMeal from "./CreateMeal"
 import UpdateMeal from "./UpdateMeal"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 type AuthProps = {
@@ -70,6 +72,18 @@ export default class Meal extends Component<AuthProps, MealState> {
     editUpdateMeal = (mealDetails: MealDetails) => {
         this.setState({updatedMeal: mealDetails})
     }
+    
+    createMealNotify = () => {
+        toast.success("Meal Created!")
+    }
+
+    editMealNotify = () => {
+        toast.success("Meal Edited!")
+    }
+
+    deleteMealNotify = () => {
+        toast.success("Meal Deleted!");
+    }
 
     fetchMyMeals = () => {
         console.log("FetchMyMeals Function Called");
@@ -108,6 +122,7 @@ export default class Meal extends Component<AuthProps, MealState> {
             .then(data => {
                 console.log(data);
                 this.fetchMyMeals();
+                this.deleteMealNotify();
             })
             .catch(err => console.log(err))
 
@@ -119,9 +134,20 @@ export default class Meal extends Component<AuthProps, MealState> {
     render() {
         return(
             <div>
-                {this.state.updateActive ? <UpdateMeal updatedMeal={this.state.updatedMeal} updateOff={this.updateOff} fetchMyMeals={this.fetchMyMeals} sessionToken={this.props.sessionToken}/> : null }
-                {this.state.createActive ? <CreateMeal createOff={this.createOff} fetchMyMeals={this.fetchMyMeals} sessionToken={this.props.sessionToken}/> : null }
+                {this.state.updateActive ? <UpdateMeal notify={this.editMealNotify} updatedMeal={this.state.updatedMeal} updateOff={this.updateOff} fetchMyMeals={this.fetchMyMeals} sessionToken={this.props.sessionToken}/> : null }
+                {this.state.createActive ? <CreateMeal notify={this.createMealNotify} createOff={this.createOff} fetchMyMeals={this.fetchMyMeals} sessionToken={this.props.sessionToken}/> : null }
                 <DisplayMeal deleteMeal={this.deleteMeal} updateOn={this.updateOn} editUpdateMeal={this.editUpdateMeal} createOn={this.createOn} meals={this.state.meals} fetchMyMeals={this.fetchMyMeals} sessionToken={this.props.sessionToken}/>
+                <ToastContainer
+                    position="bottom-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover={false}
+                />
             </div>
         )
     }
