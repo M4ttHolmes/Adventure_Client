@@ -55,29 +55,29 @@ export default class Auth extends Component<AuthProps, AuthState> {
     fields = () => !this.state.login ?
     (
         <div>
-            <label htmlFor="email"><strong>Email:</strong></label>
+            <label htmlFor="email">Email:</label>
             <br/>
             <input required type="email" id="email" placeholder="Ex: user@email.com" value={this.state.email} onChange={(e) => this.setState({email: (e.target.value)})} />
             <br/>
-            <label htmlFor="password"><strong>Password:</strong></label>
+            <label htmlFor="password">Password:</label>
             <br/>
             <input required type="password" id="password" placeholder="Enter Password" value={this.state.password} onChange={(e) => this.setState({password: (e.target.value)})} />
             <br/>
-            <label htmlFor="firstName"><strong>First Name:</strong></label>
+            <label htmlFor="firstName">First Name:</label>
             <br/>
             <input required type='text' id="firstName" placeholder="Your First Name" value={this.state.firstName} onChange={(e) => this.setState({firstName: (e.target.value)})} />
             <br/>
-            <label htmlFor="lastName"><strong>Last Name:</strong></label>
+            <label htmlFor="lastName">Last Name:</label>
             <br/>
             <input required type='text' id="lastName" placeholder="Your Last Name" value={this.state.lastName} onChange={(e) => this.setState({lastName: (e.target.value)})} />
         </div>
     ) : (
         <div>
-            <label htmlFor="email"><strong>Email:</strong></label>
+            <label htmlFor="email">Email:</label>
             <br/>
             <input required type="email" id="email" placeholder="Ex: user@email.com" value={this.state.email} onChange={(e) => this.setState({email: (e.target.value)})} />
             <br/>
-            <label htmlFor="password"><strong>Password:</strong></label>
+            <label htmlFor="password">Password:</label>
             <br/>
             <input required type="password" id="password" placeholder="Enter Password" value={this.state.password} onChange={(e) => this.setState({password: (e.target.value)})} />
             <br/>
