@@ -3,7 +3,8 @@ import {Button} from 'reactstrap';
 import DisplayAdminUsers from "./DisplayAdminUsers"
 import DisplayAdminAdv from "./DisplayAdminAdv"
 import DisplayAdminMeals from "./DisplayAdminMeals"
-import { userInfo } from "os";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 type AuthProps = {
@@ -52,6 +53,9 @@ export default class Admin extends Component<AuthProps, AdminTypes> {
         this.setState({mealOn: true})
     }
 
+    deleteNotify = () => {
+        toast.success("Item Deleted!");
+    }
 
     adminFetchAllUsers = () => {
         console.log("AdminFetchAllUsers Function Called");
@@ -90,6 +94,7 @@ export default class Admin extends Component<AuthProps, AdminTypes> {
             .then(data => {
                 console.log(data);
                 this.adminFetchAllUsers();
+                this.deleteNotify();
             })
             .catch(err => console.log(err))
 
@@ -136,6 +141,7 @@ export default class Admin extends Component<AuthProps, AdminTypes> {
             .then(data => {
                 console.log(data);
                 this.adminFetchAllAdventures();
+                this.deleteNotify();
             })
             .catch(err => console.log(err))
 
@@ -182,6 +188,7 @@ export default class Admin extends Component<AuthProps, AdminTypes> {
             .then(data => {
                 console.log(data);
                 this.adminFetchAllMeals();
+                this.deleteNotify();
             })
             .catch(err => console.log(err))
 
@@ -202,6 +209,17 @@ export default class Admin extends Component<AuthProps, AdminTypes> {
                 {this.state.userOn ? <DisplayAdminUsers users={this.state.users} deleteUser={this.adminDeleteUser} />  : null}
                 {this.state.advOn ? <DisplayAdminAdv adventures={this.state.adventures} deleteAdv={this.adminDeleteAdventure}/>  : null}
                 {this.state.mealOn ? <DisplayAdminMeals meals={this.state.meals} deleteMeal={this.adminDeleteMeal}/>  : null}
+                <ToastContainer
+                    position="bottom-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover={false}
+                />
             </div>
         )
     }

@@ -6,6 +6,7 @@ type AuthProps = {
     updateOff: () => void
     fetchMyAdventures: () => void
     updatedAdventure: AdvDetails
+    notify: () => void
 }
 
 type AdvDetails = {
@@ -59,6 +60,7 @@ export default class UpdateAdventure extends Component<AuthProps, AdvDetails> {
         .then(data => {
             this.props.fetchMyAdventures()
             this.props.updateOff()
+            this.props.notify();
         })
     }
 

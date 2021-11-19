@@ -5,6 +5,7 @@ type AuthProps = {
     sessionToken: string | undefined | null
     createOff: () => void
     fetchMyMeals: () => void
+    notify: () => void
 }
 
 type MealDetails = {
@@ -62,6 +63,7 @@ export default class CreateAdventure extends Component<AuthProps, MealDetails> {
             })
             this.props.fetchMyMeals();
             this.props.createOff();
+            this.props.notify();
         })
         .catch(err => console.log(err))
     }

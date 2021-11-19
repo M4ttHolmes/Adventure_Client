@@ -2,6 +2,8 @@ import React, { Component } from "react"
 import CreateAdventure from "./CreateAdventure"
 import DisplayAdventure from "./DisplayAdventure"
 import UpdateAdventure from "./UpdateAdventure"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 type AdventureState = {
     adventures: []
@@ -71,7 +73,17 @@ export default class Adventure extends Component<AuthProps, AdventureState> {
         this.setState({updatedAdventure: adventureDetails})
     }
 
+    createAdventureNotify = () => {
+        toast.success("Adventure Created!")
+    }
 
+    editAdventureNotify = () => {
+        toast.success("Adventure Edited!")
+    }
+
+    deleteAdventureNotify = () => {
+        toast.success("Adventure Deleted!");
+    }
 
     fetchMyAdventures = () => {
         console.log("FetchMyAdventures Function Called");
@@ -112,6 +124,7 @@ export default class Adventure extends Component<AuthProps, AdventureState> {
             .then(data => {
                 console.log(data);
                 this.fetchMyAdventures();
+                this.deleteAdventureNotify();
             })
             .catch(err => console.log(err))
 
@@ -124,9 +137,20 @@ export default class Adventure extends Component<AuthProps, AdventureState> {
     render(){
         return(
             <div>
-                {this.state.updateActive ? <UpdateAdventure updatedAdventure={this.state.updatedAdventure} updateOff={this.updateOff} fetchMyAdventures={this.fetchMyAdventures} sessionToken={this.props.sessionToken}/> : null }
-                {this.state.createActive ? <CreateAdventure createOff={this.createOff} fetchMyAdventures={this.fetchMyAdventures} sessionToken={this.props.sessionToken}/> : null }
+                {this.state.updateActive ? <UpdateAdventure notify={this.editAdventureNotify} updatedAdventure={this.state.updatedAdventure} updateOff={this.updateOff} fetchMyAdventures={this.fetchMyAdventures} sessionToken={this.props.sessionToken}/> : null }
+                {this.state.createActive ? <CreateAdventure notify={this.createAdventureNotify} createOff={this.createOff} fetchMyAdventures={this.fetchMyAdventures} sessionToken={this.props.sessionToken}/> : null }
                 <DisplayAdventure deleteAdventure={this.deleteAdventure} updateOn={this.updateOn} editUpdateAdventure={this.editUpdateAdventure} createOn={this.createOn} adventures={this.state.adventures} fetchMyAdventures={this.fetchMyAdventures} sessionToken={this.props.sessionToken}/>
+                <ToastContainer
+                    position="bottom-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover={false}
+                />
             </div>
         )
     }

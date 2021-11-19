@@ -6,6 +6,7 @@ type AuthProps = {
     updateOff: () => void
     fetchMyMeals: () => void
     updatedMeal: MealDetails
+    notify: () => void
 }
 
 type MealDetails = {
@@ -56,6 +57,7 @@ export default class UpdateMeal extends Component<AuthProps, MealDetails> {
         .then(data => {
             this.props.fetchMyMeals()
             this.props.updateOff()
+            this.props.notify()
         })
     }
 
