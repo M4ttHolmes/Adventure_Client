@@ -25,8 +25,8 @@ type AdventureDetails = {
 const DisplayAdventure = (props: AdvProps) => {
 
     return(
-        <div>
-            <h1>My Adventures</h1>
+        <div id="pageBody">
+            <h1 id="pageHeader">My Adventures</h1>
             <p>Track your adventures...</p>
             <Button onClick={props.createOn}>Create New Adventure</Button>
             <Row>
@@ -40,8 +40,10 @@ const DisplayAdventure = (props: AdvProps) => {
                                 <CardText><strong>Location:</strong> {adv.location}</CardText>
                                 <CardText><strong>Thoughts:</strong> {adv.thoughts}</CardText>
                                 <CardText><strong>Rating:</strong> {adv.rating}</CardText>
-                                <Button className="btn editBtn" type="button" onClick={() => {props.editUpdateAdventure(adv); props.updateOn()}}>Edit Adventure</Button>
-                                <Button className="btn btn-danger deleteBtn" type="button" onClick={() => {props.deleteAdventure(adv.id)}}>Delete Adventure</Button>
+                                <div id="buttonDiv">
+                                    <Button className="btn twoBtns" type="button" onClick={() => {props.editUpdateAdventure(adv); props.updateOn()}}>Edit Adventure</Button>
+                                    <Button className="btn btn-danger twoBtns" type="button" onClick={() => {props.deleteAdventure(adv.id)}}>Delete Adventure</Button>
+                                </div>
                             </CardBody>
                         </Card>
                     )

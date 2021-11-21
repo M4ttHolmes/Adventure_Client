@@ -6,14 +6,33 @@ body {
   font-family: 'Poppins', sans-serif !important;
 }
 
+#pageHeader {
+  font-family: 'Tangerine', cursive;
+  font-size: 4em;
+  font-weight: 800;
+  margin-top: 20px;
+}
+
+#navBackground {
+  height: 75px;
+  background: url(./assets//background.jpeg) no-repeat;
+  background-color: #628792e8;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position-y: -300px;
+}
+
 #backgroundImage {
   background: url(./assets//background.jpeg) no-repeat;
-  background-size: cover;
-  background-position-y: -175px;
+  height: 100vh;
+  background-size: 2000px;
+  background-attachment: fixed;
+  background-position-y: center;
+  background-position-x: center;
 }
 
 #loginBackground {
-  background-color: #628792f3 !important;
+  background-color: #628792e8 !important;
   width: 100vw;
   height: 100vh;
 }
@@ -53,4 +72,52 @@ body {
 
 .border {
   border-left: 20px solid #4B4544;
+}
+
+#pageBody {
+  background-color: #D4DEDB;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.card {
+  width: 45% !important;
+  margin: 2rem !important;
+  border: 1px solid #4B4544 !important;
+  border-radius: 10px !important;
+} 
+
+.row {
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.card-body {
+  text-align: left;
+}
+
+.card-title {
+  font-size: 1.5em;
+  color: #628792;
+}
+
+#buttonDiv {
+  text-align: center;
+}
+
+.twoBtns {
+  margin: 20px;
+}
+
+.buttonRowItem {
+  margin: 20px;
+}
+
+#modalHeader {
+  background-color: #628792;
+  color: white;
+}
+
+.inputSpacer {
+  margin-bottom: 20px !important;
 }

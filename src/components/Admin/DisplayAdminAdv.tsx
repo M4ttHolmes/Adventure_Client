@@ -20,7 +20,7 @@ const DisplayAdminAdv = (props: AdminProps) => {
 
 
     return(
-        <>
+        <div style={{backgroundColor:"white"}}>
             <Table striped>
                 <thead>
                     <tr>
@@ -51,7 +51,7 @@ const DisplayAdminAdv = (props: AdminProps) => {
                 </tbody>
 
             </Table>
-        </>
+        </div>
     )
 }
 

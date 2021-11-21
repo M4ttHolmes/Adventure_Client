@@ -19,7 +19,7 @@ const DisplayAdminMeals = (props: AdminProps) => {
 
 
     return(
-        <>
+        <div style={{backgroundColor:"white"}}>
             <Table striped>
                 <thead>
                     <tr>
@@ -48,7 +48,7 @@ const DisplayAdminMeals = (props: AdminProps) => {
                 </tbody>
 
             </Table>
-        </>
+        </div>
     )
 }
 

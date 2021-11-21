@@ -28,8 +28,8 @@ const DisplayMeal = (props: MealProps) => {
 
 
     return(
-        <div>
-            <h1>My Meals</h1>
+        <div id="pageBody">
+            <h1 id="pageHeader">My Meals</h1>
             <p>Log your meals...</p>
             <Button onClick={props.createOn}>Create New Meal</Button>
             <Row>
@@ -42,8 +42,10 @@ const DisplayMeal = (props: MealProps) => {
                                 <CardText><strong>Location:</strong> {meal.location}</CardText>
                                 <CardText><strong>Thoughts:</strong> {meal.thoughts}</CardText>
                                 <CardText><strong>Rating:</strong> {meal.rating}</CardText>
-                                <Button className="btn editBtn" type="button" onClick={() => {props.editUpdateMeal(meal); props.updateOn()}}>Edit Meal</Button>
-                                <Button className="btn btn-danger deleteBtn" type="button" onClick={() => {props.deleteMeal(meal.id)}}>Delete Meal</Button>
+                                <div id="buttonDiv">
+                                    <Button className="btn twoBtns" type="button" onClick={() => {props.editUpdateMeal(meal); props.updateOn()}}>Edit Meal</Button>
+                                    <Button className="btn btn-danger twoBtns" type="button" onClick={() => {props.deleteMeal(meal.id)}}>Delete Meal</Button>
+                                </div>
                             </CardBody>
                         </Card>
                     )
