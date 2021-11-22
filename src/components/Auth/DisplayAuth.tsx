@@ -13,6 +13,7 @@ type AuthProps = {
     submitButton: () => void
     fields: () => void
     loginSignupButton: () => string
+    error: string
 }
 
 const DisplayAuth = (props: AuthProps) => {
@@ -34,6 +35,7 @@ const DisplayAuth = (props: AuthProps) => {
                             <br/>
                             <Button className="loginButton" outline onClick={props.loginToggle}>{props.loginSignupButton()}</Button>
                             <Button className="loginButton" type="submit" >{props.submitButton()} </Button>
+                            {props.error === "" ? null : <p id="errorMessage">{props.error}</p>}
                         </Form>
                         </Col>
                     </Row>

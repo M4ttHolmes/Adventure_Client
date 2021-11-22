@@ -121,3 +121,7 @@ body {
 .inputSpacer {
   margin-bottom: 20px !important;
 }
+
+#errorMessage {
+  color: red
+}

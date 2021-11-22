@@ -8,10 +8,12 @@ type AuthState = {
     lastName: string,
     role: string,
     login: boolean,
+    error: string
 };
 
 type AuthProps = {
     updateLocalStorage: (newToken: string) => void
+    clearLocalStorage: () => void
     updateRole: (role: string) => void
 }
 
@@ -25,6 +27,7 @@ export default class Auth extends Component<AuthProps, AuthState> {
             lastName: "",
             role: "User",
             login: true,
+            error: ""
         }
     }
 
@@ -48,7 +51,8 @@ export default class Auth extends Component<AuthProps, AuthState> {
             email: "",
             password: "",
             firstName: "",
-            lastName: ""
+            lastName: "",
+            error: ""
         })
     }
 
@@ -118,10 +122,20 @@ export default class Auth extends Component<AuthProps, AuthState> {
         })
         .then(response => response.json())
         .then(json => {
+            console.log(json);
+            this.setState({error: json.message})
             this.props.updateLocalStorage(json.sessionToken)
-            this.props.updateRole(json.user.role)
+            
+            if (json.user.role !== undefined) {
+                this.props.updateRole(json.user.role)
+            }
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+            this.props.clearLocalStorage();
+        }
+        
+        )
     }
 
 
@@ -140,6 +154,7 @@ export default class Auth extends Component<AuthProps, AuthState> {
                     submitButton={this.submitButton}
                     fields={this.fields}
                     loginSignupButton={this.loginSignupButton}
+                    error={this.state.error}
                 /> 
             </div>
         )
