@@ -1,3 +1,14 @@
+@media only screen and (max-width: 700px) {
+  .card {
+    width: 90% !important;
+  }
+
+  .navButton {
+    margin-bottom: .5em;
+  }
+
+}
+
 .App {
   text-align: center;
 }
@@ -81,7 +92,6 @@ body {
 }
 
 .card {
-  width: 45% !important;
   margin: 2rem !important;
   border: 1px solid #4B4544 !important;
   border-radius: 10px !important;
@@ -131,7 +141,7 @@ body {
 }
 
 .contentBackground {
-  margin-top: 75px;
+  /* margin-top: 75px; */
   background: url(./assets//map.jpeg) no-repeat;
   height: 100vh;
   background-size: 2000px;
@@ -140,8 +150,6 @@ body {
   background-position-x: center;
 }
 
-#fixedNav {
-  position: fixed;
-  top: 0;
-  width: 100vw;
+.navbar {
+  background-color: #628792 !important;
 }

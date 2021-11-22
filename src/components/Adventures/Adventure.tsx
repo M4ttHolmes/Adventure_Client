@@ -4,6 +4,7 @@ import DisplayAdventure from "./DisplayAdventure"
 import UpdateAdventure from "./UpdateAdventure"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PropTypes from "prop-types"
 
 type AdventureState = {
     adventures: AdventureDetails[]

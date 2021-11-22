@@ -99,8 +99,8 @@ export default class UpdateAdventure extends Component<AuthProps, AdvDetails> {
                             </Input>
                         </FormGroup>
                         <div id="buttonDiv">
-                            <Button className="twoBtns" type="submit">Update!</Button>
                             <Button className="twoBtns" outline onClick={this.props.updateOff}>Cancel</Button>
+                            <Button className="twoBtns" type="submit">Update!</Button>
                         </div>
                     </Form>
                 </ModalBody>

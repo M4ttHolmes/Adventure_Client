@@ -93,8 +93,8 @@ export default class UpdateMeal extends Component<AuthProps, MealDetails> {
                             </Input>
                         </FormGroup>
                         <div id="buttonDiv"> 
-                            <Button className="twoBtns"type="submit">Update!</Button>
                             <Button className="twoBtns" outline onClick={this.props.updateOff}>Cancel</Button>
+                            <Button className="twoBtns"type="submit">Update!</Button>
                         </div>
                     </Form>
                 </ModalBody>

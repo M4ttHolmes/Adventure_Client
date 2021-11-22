@@ -3,7 +3,7 @@ import Navigation from "./Navigation"
 import Admin from "../components/Admin/Admin";
 import Adventure from "../components/Adventures/Adventure";
 import Meal from "../components/Meals/Meal";
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 
 type AuthProps = {
@@ -22,6 +22,7 @@ const Navbar = (props: AuthProps) => {
                     {props.userRole === "Admin" ?
                         <Route exact path="/admin"><Admin userRole={props.userRole} sessionToken={props.sessionToken}/></Route>
                         : null
+                        // <Redirect to="/adventure" />
                     }
                     <Route exact path="/adventure"><Adventure sessionToken={props.sessionToken}/></Route>
                     <Route exact path="/meals"><Meal sessionToken={props.sessionToken}/></Route> 

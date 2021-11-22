@@ -106,8 +106,8 @@ export default class CreateAdventure extends Component<AuthProps, AdvDetails> {
                             </Input>
                         </FormGroup>
                         <div id="buttonDiv">
-                            <Button className="twoBtns" type="submit">Create!</Button>
                             <Button className="twoBtns" outline onClick={this.props.createOff}>Cancel</Button>
+                            <Button className="twoBtns" type="submit">Create!</Button>
                         </div>
                     </Form>
                 </ModalBody>
