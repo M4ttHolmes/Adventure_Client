@@ -32,8 +32,8 @@ const DisplayMeal = (props: MealProps) => {
         <div className="contentBackground">
             <div id="pageBody">
                 <h1 id="pageHeader">My Meals</h1>
-                <p>Log your meals...</p>
-                <Button onClick={props.createOn}>Create New Meal</Button>
+                <p>Track a new favorite restaruant or look back on fond meal memories.</p>
+                <Button onClick={props.createOn}>Log New Meal</Button>
                 <Row>
                     {props.meals.map((meal: MealDetails, key:number) => {
                         return(

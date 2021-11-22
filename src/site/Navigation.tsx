@@ -69,19 +69,19 @@ export default class Navigation extends React.Component<AuthProps, NavState> {
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ms-auto" navbar>
                         <NavItem>
-                        <Link to="/adventure" style={styles.navLink}><Button className="navButton">Adventures</Button></Link>
+                        <Link to="/adventure"><Button className="navButton" onClick={this.toggle} >Adventures</Button></Link>
                     </NavItem>
                     <NavItem>
-                        <Link to="/meals" style={styles.navLink}><Button className="navButton">Meals</Button></Link>
+                        <Link to="/meals"><Button className="navButton" onClick={this.toggle}>Meals</Button></Link>
                     </NavItem>
                     {this.props.userRole === "Admin" ? 
                         <NavItem>
-                            <Link to="/admin" style={styles.navLink}><Button className="navButton" style={styles.adminBorder}>Admin Only</Button></Link>
+                            <Link to="/admin"><Button className="navButton" style={styles.adminBorder} onClick={this.toggle}>Admin Only</Button></Link>
                         </NavItem>
                             : null
                     }
                     <NavItem>
-                        <Link to="/" onClick={this.props.clearLocalStorage} style={styles.navLink}><Button className="navButton">Logout</Button></Link>
+                        <Link to="/" onClick={this.props.clearLocalStorage}><Button className="navButton" onClick={this.toggle}>Logout</Button></Link>
                     </NavItem>
                     </Nav>
                 </Collapse>

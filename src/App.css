@@ -1,12 +1,17 @@
 @media only screen and (max-width: 700px) {
   .card {
     width: 90% !important;
+    padding: 0px !important;
   }
 
   .navButton {
     margin-bottom: .5em;
+    margin-right: 0 !important;
   }
 
+  #loginContainer {
+    width: 95% !important;
+  }
 }
 
 .App {
@@ -152,4 +157,8 @@ body {
 
 .navbar {
   background-color: #628792 !important;
+}
+
+.navButton {
+  margin-right: 3em;
 }

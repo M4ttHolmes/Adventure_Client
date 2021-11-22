@@ -29,8 +29,8 @@ const DisplayAdventure = (props: AdvProps) => {
         <div className="contentBackground">
             <div id="pageBody">
                 <h1 id="pageHeader">My Adventures</h1>
-                <p>Track your adventures...</p>
-                <Button onClick={props.createOn}>Create New Adventure</Button>
+                <p>Track a new adventure, or reminisce through your previous adventures.</p>
+                <Button onClick={props.createOn}>Log New Adventure</Button>
                 <Row>
                     {props.adventures.map((adv: AdventureDetails, key:number) => {
                         return(
