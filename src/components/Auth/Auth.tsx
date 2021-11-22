@@ -8,10 +8,12 @@ type AuthState = {
     lastName: string,
     role: string,
     login: boolean,
+    error: string
 };
 
 type AuthProps = {
     updateLocalStorage: (newToken: string) => void
+    clearLocalStorage: () => void
     updateRole: (role: string) => void
 }
 
@@ -25,6 +27,7 @@ export default class Auth extends Component<AuthProps, AuthState> {
             lastName: "",
             role: "User",
             login: true,
+            error: ""
         }
     }
 
@@ -48,36 +51,37 @@ export default class Auth extends Component<AuthProps, AuthState> {
             email: "",
             password: "",
             firstName: "",
-            lastName: ""
+            lastName: "",
+            error: ""
         })
     }
 
     fields = () => !this.state.login ?
     (
         <div>
-            <label htmlFor="email"><strong>Email:</strong></label>
+            <label htmlFor="email">Email:</label>
             <br/>
             <input required type="email" id="email" placeholder="Ex: user@email.com" value={this.state.email} onChange={(e) => this.setState({email: (e.target.value)})} />
             <br/>
-            <label htmlFor="password"><strong>Password:</strong></label>
+            <label htmlFor="password">Password:</label>
             <br/>
             <input required type="password" id="password" placeholder="Enter Password" value={this.state.password} onChange={(e) => this.setState({password: (e.target.value)})} />
             <br/>
-            <label htmlFor="firstName"><strong>First Name:</strong></label>
+            <label htmlFor="firstName">First Name:</label>
             <br/>
             <input required type='text' id="firstName" placeholder="Your First Name" value={this.state.firstName} onChange={(e) => this.setState({firstName: (e.target.value)})} />
             <br/>
-            <label htmlFor="lastName"><strong>Last Name:</strong></label>
+            <label htmlFor="lastName">Last Name:</label>
             <br/>
             <input required type='text' id="lastName" placeholder="Your Last Name" value={this.state.lastName} onChange={(e) => this.setState({lastName: (e.target.value)})} />
         </div>
     ) : (
         <div>
-            <label htmlFor="email"><strong>Email:</strong></label>
+            <label htmlFor="email">Email:</label>
             <br/>
             <input required type="email" id="email" placeholder="Ex: user@email.com" value={this.state.email} onChange={(e) => this.setState({email: (e.target.value)})} />
             <br/>
-            <label htmlFor="password"><strong>Password:</strong></label>
+            <label htmlFor="password">Password:</label>
             <br/>
             <input required type="password" id="password" placeholder="Enter Password" value={this.state.password} onChange={(e) => this.setState({password: (e.target.value)})} />
             <br/>
@@ -118,10 +122,20 @@ export default class Auth extends Component<AuthProps, AuthState> {
         })
         .then(response => response.json())
         .then(json => {
+            console.log(json);
+            this.setState({error: json.message})
             this.props.updateLocalStorage(json.sessionToken)
-            this.props.updateRole(json.user.role)
+            
+            if (json.user.role !== undefined) {
+                this.props.updateRole(json.user.role)
+            }
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+            this.props.clearLocalStorage();
+        }
+        
+        )
     }
 
 
@@ -140,6 +154,7 @@ export default class Auth extends Component<AuthProps, AuthState> {
                     submitButton={this.submitButton}
                     fields={this.fields}
                     loginSignupButton={this.loginSignupButton}
+                    error={this.state.error}
                 /> 
             </div>
         )

@@ -200,26 +200,29 @@ export default class Admin extends Component<AuthProps, AdminTypes> {
 
     render() {
         return(
-            <div>
-                <div className="buttonRow">
-                    <Button onClick={() => {this.toggleUser(); this.adminFetchAllUsers()}}>Display All Users</Button>
-                    <Button onClick={() => {this.toggleAdv(); this.adminFetchAllAdventures()}}>Display All Adventures</Button>
-                    <Button onClick={() => {this.toggleMeal(); this.adminFetchAllMeals()}}>Display All Meals</Button>
+            <div className="contentBackground">
+                <div id="pageBody">
+                    <h1 id="pageHeader">Admin Tools</h1>
+                    <div>
+                        <Button className="buttonRowItem" onClick={() => {this.toggleUser(); this.adminFetchAllUsers()}}>Display All Users</Button>
+                        <Button className="buttonRowItem" onClick={() => {this.toggleAdv(); this.adminFetchAllAdventures()}}>Display All Adventures</Button>
+                        <Button className="buttonRowItem" onClick={() => {this.toggleMeal(); this.adminFetchAllMeals()}}>Display All Meals</Button>
+                    </div>
+                    {this.state.userOn ? <DisplayAdminUsers users={this.state.users} deleteUser={this.adminDeleteUser} />  : null}
+                    {this.state.advOn ? <DisplayAdminAdv adventures={this.state.adventures} deleteAdv={this.adminDeleteAdventure}/>  : null}
+                    {this.state.mealOn ? <DisplayAdminMeals meals={this.state.meals} deleteMeal={this.adminDeleteMeal}/>  : null}
+                    <ToastContainer
+                        position="bottom-right"
+                        autoClose={5000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover={false}
+                    />
                 </div>
-                {this.state.userOn ? <DisplayAdminUsers users={this.state.users} deleteUser={this.adminDeleteUser} />  : null}
-                {this.state.advOn ? <DisplayAdminAdv adventures={this.state.adventures} deleteAdv={this.adminDeleteAdventure}/>  : null}
-                {this.state.mealOn ? <DisplayAdminMeals meals={this.state.meals} deleteMeal={this.adminDeleteMeal}/>  : null}
-                <ToastContainer
-                    position="bottom-right"
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover={false}
-                />
             </div>
         )
     }

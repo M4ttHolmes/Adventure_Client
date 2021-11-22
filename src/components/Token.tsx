@@ -50,7 +50,7 @@ export default class Token extends Component<{}, TokenType> {
     viewConductor = () => {
         return this.state.sessionToken !== undefined ?
             <Main userRole={this.state.role} sessionToken={this.state.sessionToken} clearLocalStorage={this.clearLocalStorage} /> : 
-            <Auth updateRole={this.updateRole} updateLocalStorage={this.updateLocalStorage}/>
+            <Auth updateRole={this.updateRole} updateLocalStorage={this.updateLocalStorage} clearLocalStorage={this.clearLocalStorage}/>
     }
     
     render(){

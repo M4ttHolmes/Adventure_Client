@@ -21,7 +21,7 @@ const DisplayAdminUsers = (props: AdminProps) => {
 
 
     return(
-        <>
+        <div style={{backgroundColor:"white"}}>
             <Table striped>
                 <thead>
                     <tr>
@@ -48,7 +48,7 @@ const DisplayAdminUsers = (props: AdminProps) => {
                 </tbody>
 
             </Table>
-        </>
+        </div>
     )
 }
 

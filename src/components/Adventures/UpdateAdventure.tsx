@@ -73,33 +73,35 @@ export default class UpdateAdventure extends Component<AuthProps, AdvDetails> {
                 <ModalBody>
                     <Form onSubmit={this.updateAdventure}>
                         <FormGroup>
-                            <Label htmlFor="location">Adventure Location</Label>
-                            <Input name="location" type="text" value={this.state.location} onChange={(e) => this.setState({location: (e.target.value)})}/>
-
-                            <Label htmlFor="date"></Label>
-                            <Input name="date" type="date" value={this.state.date} onChange={(e) => this.setState({ date: (e.target.value)})}/>
-
                             <Label htmlFor="advName">Adventure Name</Label>
-                            <Input name="advName" type="text" value={this.state.advName} onChange={(e) => this.setState({advName: (e.target.value)})}/>
+                            <Input className="inputSpacer" name="advName" type="text" value={this.state.advName} onChange={(e) => this.setState({advName: (e.target.value)})}/>
 
                             <Label htmlFor="actType">Activity Type</Label>
-                            <Input name="actType" type="text" value={this.state.actType} onChange={(e) => this.setState({actType: (e.target.value)})}/>
+                            <Input className="inputSpacer" name="actType" type="text" value={this.state.actType} onChange={(e) => this.setState({actType: (e.target.value)})}/>
+
+                            <Label htmlFor="date">Date</Label>
+                            <Input className="inputSpacer" name="date" type="date" value={this.state.date} onChange={(e) => this.setState({ date: (e.target.value)})}/>
+
+                            <Label htmlFor="location">Adventure Location</Label>
+                            <Input className="inputSpacer" name="location" type="text" value={this.state.location} onChange={(e) => this.setState({location: (e.target.value)})}/>
 
                             <Label htmlFor="thoughts">Your Thoughts</Label>
-                            <Input name="thoughts" type="textarea" value={this.state.thoughts} onChange={(e) => this.setState({thoughts: (e.target.value)})}/>
+                            <Input className="inputSpacer" name="thoughts" type="textarea" value={this.state.thoughts} onChange={(e) => this.setState({thoughts: (e.target.value)})}/>
 
                             <Label htmlFor="rating">Rating</Label>
-                            <Input name="rating" type="select" value={this.state.rating} onChange={(e) => this.setState({rating: Number((e.target.value))})}>
+                            <Input className="inputSpacer" name="rating" type="select" value={this.state.rating} onChange={(e) => this.setState({rating: Number((e.target.value))})}>
                                 <option hidden>--Rate your Adventure--</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
+                                <option value="1">1 Star - Never Again</option>
+                                <option value="2">2 Stars - Not Great</option>
+                                <option value="3">3 Stars - Okay/Fine</option>
+                                <option value="4">4 Stars - Pretty Good</option>
+                                <option value="5">5 Stars - Loved it</option>
                             </Input>
                         </FormGroup>
-                        <Button type="submit">Update!</Button>
-                        <Button onClick={this.props.updateOff}>Cancel</Button>
+                        <div id="buttonDiv">
+                            <Button className="twoBtns" type="submit">Update!</Button>
+                            <Button className="twoBtns" outline onClick={this.props.updateOff}>Cancel</Button>
+                        </div>
                     </Form>
                 </ModalBody>
             </Modal>

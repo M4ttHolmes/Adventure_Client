@@ -12,7 +12,7 @@ type AuthProps = {
 
 
 type MealState = {
-    meals: []
+    meals: MealDetails[]
     createActive: boolean
     updateActive: boolean
     updatedMeal: MealDetails
@@ -85,6 +85,17 @@ export default class Meal extends Component<AuthProps, MealState> {
         toast.success("Meal Deleted!");
     }
 
+    convertToStars = (key: number) => {
+        let array = [];
+        for (let i = 1; i <= this.state.meals[key].rating; i++) {
+            console.log(i);
+            array.push(1)
+        }
+            return array.map((num: number, key: number) => {
+                return <i className="fas fa-star"></i>
+            })
+    }
+
     fetchMyMeals = () => {
         console.log("FetchMyMeals Function Called");
         fetch("http://localhost:5000/meal/mine", {
@@ -136,7 +147,7 @@ export default class Meal extends Component<AuthProps, MealState> {
             <div>
                 {this.state.updateActive ? <UpdateMeal notify={this.editMealNotify} updatedMeal={this.state.updatedMeal} updateOff={this.updateOff} fetchMyMeals={this.fetchMyMeals} sessionToken={this.props.sessionToken}/> : null }
                 {this.state.createActive ? <CreateMeal notify={this.createMealNotify} createOff={this.createOff} fetchMyMeals={this.fetchMyMeals} sessionToken={this.props.sessionToken}/> : null }
-                <DisplayMeal deleteMeal={this.deleteMeal} updateOn={this.updateOn} editUpdateMeal={this.editUpdateMeal} createOn={this.createOn} meals={this.state.meals} fetchMyMeals={this.fetchMyMeals} sessionToken={this.props.sessionToken}/>
+                <DisplayMeal convertToStars={this.convertToStars} deleteMeal={this.deleteMeal} updateOn={this.updateOn} editUpdateMeal={this.editUpdateMeal} createOn={this.createOn} meals={this.state.meals} fetchMyMeals={this.fetchMyMeals} sessionToken={this.props.sessionToken}/>
                 <ToastContainer
                     position="bottom-right"
                     autoClose={5000}
