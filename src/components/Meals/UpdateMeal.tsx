@@ -85,15 +85,17 @@ export default class UpdateMeal extends Component<AuthProps, MealDetails> {
                             <Label htmlFor="rating">Rating</Label>
                             <Input name="rating" type="select" value={this.state.rating} onChange={(e) => this.setState({rating: Number((e.target.value))})}>
                                 <option hidden>--Rate your Meal--</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
+                                <option value="1">1 Star - Never Again</option>
+                                <option value="2">2 Stars - Not Great</option>
+                                <option value="3">3 Stars - Okay/Fine</option>
+                                <option value="4">4 Stars - Pretty Good</option>
+                                <option value="5">5 Stars - Loved it</option>
                             </Input>
                         </FormGroup>
-                        <Button type="submit">Update!</Button>
-                        <Button onClick={this.props.updateOff}>Cancel</Button>
+                        <div id="buttonDiv"> 
+                            <Button className="twoBtns"type="submit">Update!</Button>
+                            <Button className="twoBtns" outline onClick={this.props.updateOff}>Cancel</Button>
+                        </div>
                     </Form>
                 </ModalBody>
             </Modal>

@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 type AdventureState = {
-    adventures: []
+    adventures: AdventureDetails[]
     createActive: boolean
     updateActive: boolean
     updatedAdventure: AdventureDetails
@@ -85,6 +85,18 @@ export default class Adventure extends Component<AuthProps, AdventureState> {
         toast.success("Adventure Deleted!");
     }
 
+    convertToStars = (key: number) => {
+        let array = [];
+        for (let i = 1; i <= this.state.adventures[key].rating; i++) {
+            console.log(i);
+            array.push(1)
+        }
+            return array.map((num: number, key: number) => {
+                return <i className="fas fa-star"></i>
+            })
+    }
+
+
     fetchMyAdventures = () => {
         console.log("FetchMyAdventures Function Called");
         fetch("http://localhost:5000/adventure/mine", {
@@ -139,7 +151,7 @@ export default class Adventure extends Component<AuthProps, AdventureState> {
             <div>
                 {this.state.updateActive ? <UpdateAdventure notify={this.editAdventureNotify} updatedAdventure={this.state.updatedAdventure} updateOff={this.updateOff} fetchMyAdventures={this.fetchMyAdventures} sessionToken={this.props.sessionToken}/> : null }
                 {this.state.createActive ? <CreateAdventure notify={this.createAdventureNotify} createOff={this.createOff} fetchMyAdventures={this.fetchMyAdventures} sessionToken={this.props.sessionToken}/> : null }
-                <DisplayAdventure deleteAdventure={this.deleteAdventure} updateOn={this.updateOn} editUpdateAdventure={this.editUpdateAdventure} createOn={this.createOn} adventures={this.state.adventures} fetchMyAdventures={this.fetchMyAdventures} sessionToken={this.props.sessionToken}/>
+                <DisplayAdventure convertToStars={this.convertToStars} deleteAdventure={this.deleteAdventure} updateOn={this.updateOn} editUpdateAdventure={this.editUpdateAdventure} createOn={this.createOn} adventures={this.state.adventures} fetchMyAdventures={this.fetchMyAdventures} sessionToken={this.props.sessionToken}/>
                 <ToastContainer
                     position="bottom-right"
                     autoClose={5000}

@@ -29,28 +29,30 @@ type AuthProps = {
 
 const Navigation = (props: AuthProps) => {
     return (
-        <Navbar style={styles.mainNav} dark expand="md">
-            <NavbarBrand href="/">
-                <i className="fas fa-hiking fa-lg"></i> AdventureJournal
-            </NavbarBrand>
-            <Nav className="ms-auto">
-                <NavItem>
-                    <Link to="/adventure" style={styles.navLink}><Button>Adventures</Button></Link>
-                </NavItem>
-                <NavItem>
-                    <Link to="/meals" style={styles.navLink}><Button>Meals</Button></Link>
-                </NavItem>
-                {props.userRole === "Admin" ? 
+        <div id="fixedNav">
+            <Navbar style={styles.mainNav} dark expand="md">
+                <NavbarBrand href="/">
+                    <i className="fas fa-hiking fa-lg"></i> AdventureJournal
+                </NavbarBrand>
+                <Nav className="ms-auto">
                     <NavItem>
-                        <Link to="/admin" style={styles.navLink}><Button style={styles.adminBorder}>Admin Only</Button></Link>
+                        <Link to="/adventure" style={styles.navLink}><Button>Adventures</Button></Link>
                     </NavItem>
-                : null
-                }
-                <NavItem>
-                    <Link to="/" onClick={props.clearLocalStorage} style={styles.navLink}><Button>Logout</Button></Link>
-                </NavItem>
-            </Nav>
-        </Navbar>
+                    <NavItem>
+                        <Link to="/meals" style={styles.navLink}><Button>Meals</Button></Link>
+                    </NavItem>
+                    {props.userRole === "Admin" ? 
+                        <NavItem>
+                            <Link to="/admin" style={styles.navLink}><Button style={styles.adminBorder}>Admin Only</Button></Link>
+                        </NavItem>
+                    : null
+                    }
+                    <NavItem>
+                        <Link to="/" onClick={props.clearLocalStorage} style={styles.navLink}><Button>Logout</Button></Link>
+                    </NavItem>
+                </Nav>
+            </Navbar>
+        </div>
     );
 };
 

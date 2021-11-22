@@ -91,11 +91,11 @@ export default class UpdateAdventure extends Component<AuthProps, AdvDetails> {
                             <Label htmlFor="rating">Rating</Label>
                             <Input className="inputSpacer" name="rating" type="select" value={this.state.rating} onChange={(e) => this.setState({rating: Number((e.target.value))})}>
                                 <option hidden>--Rate your Adventure--</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
+                                <option value="1">1 Star - Never Again</option>
+                                <option value="2">2 Stars - Not Great</option>
+                                <option value="3">3 Stars - Okay/Fine</option>
+                                <option value="4">4 Stars - Pretty Good</option>
+                                <option value="5">5 Stars - Loved it</option>
                             </Input>
                         </FormGroup>
                         <div id="buttonDiv">

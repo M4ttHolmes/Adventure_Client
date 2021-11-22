@@ -75,7 +75,7 @@ body {
 }
 
 #pageBody {
-  background-color: #D4DEDB;
+  background-color: #d4dedbe7;
   height: 100vh;
   overflow: scroll;
 }
@@ -124,4 +124,24 @@ body {
 
 #errorMessage {
   color: red
+}
+
+.fa-star {
+  color: #628792;
+}
+
+.contentBackground {
+  margin-top: 75px;
+  background: url(./assets//map.jpeg) no-repeat;
+  height: 100vh;
+  background-size: 2000px;
+  background-attachment: fixed;
+  background-position-y: center;
+  background-position-x: center;
+}
+
+#fixedNav {
+  position: fixed;
+  top: 0;
+  width: 100vw;
 }
