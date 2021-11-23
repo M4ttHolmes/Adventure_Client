@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Form, FormGroup, ModalHeader, Button, Label, Input, Modal, ModalBody } from 'reactstrap';
+import APIURL from "../../helpers/environment"
 
 type AuthProps = {
     sessionToken: string | undefined | null
@@ -37,8 +38,7 @@ export default class UpdateAdventure extends Component<AuthProps, AdvDetails> {
 
     updateAdventure = (e: React.FormEvent<HTMLFormElement> ) => {
         e.preventDefault();
-        console.log(`http://localhost:5000/adventure/update/${this.props.updatedAdventure.id}`);
-        fetch(`http://localhost:5000/adventure/update/${this.props.updatedAdventure.id}`, {
+        fetch(`${APIURL}adventure/update/${this.props.updatedAdventure.id}`, {
             method: "PUT",
             body: JSON.stringify({
                 adventure: {

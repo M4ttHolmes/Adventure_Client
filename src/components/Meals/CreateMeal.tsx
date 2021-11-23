@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Form, FormGroup, ModalHeader, Button, Label, Input, Modal, ModalBody } from 'reactstrap';
+import APIURL from "../../helpers/environment"
 
 type AuthProps = {
     sessionToken: string | undefined | null
@@ -44,7 +45,7 @@ export default class CreateAdventure extends Component<AuthProps, MealDetails> {
 
     createMeal = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        fetch("http://localhost:5000/meal/create", {
+        fetch(`${APIURL}/meal/create`, {
             method: "POST",
             body: JSON.stringify({
                 meal: {
