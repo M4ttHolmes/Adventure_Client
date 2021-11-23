@@ -29,6 +29,10 @@ type AdventureDetails = {
     id: string
 }
 
+// Component.propTypes = {  // prop-types seems to be deprecated? 
+//     test: PropTypes.string
+// }
+
 
 export default class Adventure extends Component<AuthProps, AdventureState> {
     constructor(props: AuthProps) {
@@ -45,7 +49,7 @@ export default class Adventure extends Component<AuthProps, AdventureState> {
                 rating: 0,
                 thoughts: "",
                 private: true,
-                id: ""
+                id: "",
             }
         }
     }

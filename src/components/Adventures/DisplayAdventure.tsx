@@ -30,6 +30,7 @@ const DisplayAdventure = (props: AdvProps) => {
             <div id="pageBody">
                 <h1 id="pageHeader">My Adventures</h1>
                 <p>Track a new adventure, or reminisce through your previous adventures.</p>
+                <p>Need help looking for your next adventure destination? Check out the <a href="https://m4ttholmes-national-parks.web.app/" target="_blank">US National Parks Information Center</a></p>
                 <Button onClick={props.createOn}>Log New Adventure</Button>
                 <Row>
                     {props.adventures.map((adv: AdventureDetails, key:number) => {

@@ -6,12 +6,7 @@ import {
     NavbarToggler,
     NavbarBrand,
     Nav,
-    NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem } from 'reactstrap';
+    NavItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Radium from "radium";
 
@@ -47,6 +42,7 @@ export default class Navigation extends React.Component<AuthProps, NavState> {
         super(props);
 
         this.toggle = this.toggle.bind(this);
+        this.toggleOff = this.toggleOff.bind(this);
         this.state = {
             isOpen: false   
         };
@@ -55,6 +51,12 @@ export default class Navigation extends React.Component<AuthProps, NavState> {
     toggle() {
         this.setState({
             isOpen: !this.state.isOpen
+        });
+    }
+
+    toggleOff() {
+        this.setState({
+            isOpen: false
         });
     }
 
@@ -69,19 +71,19 @@ export default class Navigation extends React.Component<AuthProps, NavState> {
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ms-auto" navbar>
                         <NavItem>
-                        <Link to="/adventure"><Button className="navButton" onClick={this.toggle} >Adventures</Button></Link>
+                        <Link to="/adventure"><Button className="navButton" onClick={this.toggleOff}>Adventures</Button></Link>
                     </NavItem>
                     <NavItem>
-                        <Link to="/meals"><Button className="navButton" onClick={this.toggle}>Meals</Button></Link>
+                        <Link to="/meals"><Button className="navButton" onClick={this.toggleOff}>Meals</Button></Link>
                     </NavItem>
                     {this.props.userRole === "Admin" ? 
                         <NavItem>
-                            <Link to="/admin"><Button className="navButton" style={styles.adminBorder} onClick={this.toggle}>Admin Only</Button></Link>
+                            <Link to="/admin"><Button className="navButton" style={styles.adminBorder} onClick={this.toggleOff}>Admin Only</Button></Link>
                         </NavItem>
                             : null
                     }
                     <NavItem>
-                        <Link to="/" onClick={this.props.clearLocalStorage}><Button className="navButton" onClick={this.toggle}>Logout</Button></Link>
+                        <Link to="/" onClick={this.props.clearLocalStorage}><Button className="navButton" onClick={this.toggleOff}>Logout</Button></Link>
                     </NavItem>
                     </Nav>
                 </Collapse>

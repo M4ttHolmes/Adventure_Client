@@ -21,8 +21,7 @@ const Navbar = (props: AuthProps) => {
                     <Route exact path="/"><Adventure sessionToken={props.sessionToken}/></Route>
                     {props.userRole === "Admin" ?
                         <Route exact path="/admin"><Admin userRole={props.userRole} sessionToken={props.sessionToken}/></Route>
-                        : null
-                        // <Redirect to="/adventure" />
+                        : <Redirect from="/admin" to="/adventure" />
                     }
                     <Route exact path="/adventure"><Adventure sessionToken={props.sessionToken}/></Route>
                     <Route exact path="/meals"><Meal sessionToken={props.sessionToken}/></Route> 
