@@ -1,4 +1,4 @@
-# Adventure Journal - Server README
+# Adventure Journal - Client README
 ### *Matt Holmes - WD104*
 ### *Eleven Fifty Red Badge Project - Nov 2021*
 ---
