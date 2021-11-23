@@ -38,7 +38,7 @@ export default class UpdateAdventure extends Component<AuthProps, AdvDetails> {
 
     updateAdventure = (e: React.FormEvent<HTMLFormElement> ) => {
         e.preventDefault();
-        fetch(`${APIURL}adventure/update/${this.props.updatedAdventure.id}`, {
+        fetch(`${APIURL}/adventure/update/${this.props.updatedAdventure.id}`, {
             method: "PUT",
             body: JSON.stringify({
                 adventure: {
