@@ -1,38 +1,164 @@
+@media only screen and (max-width: 700px) {
+  .card {
+    width: 90% !important;
+    padding: 0px !important;
+  }
+
+  .navButton {
+    margin-bottom: .5em;
+    margin-right: 0 !important;
+  }
+
+  #loginContainer {
+    width: 95% !important;
+  }
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: 'Poppins', sans-serif !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#pageHeader {
+  font-family: 'Tangerine', cursive;
+  font-size: 4em;
+  font-weight: 800;
+  margin-top: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+#navBackground {
+  height: 75px;
+  background: url(./assets//background.jpeg) no-repeat;
+  background-color: #628792e8;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position-y: -300px;
+}
+
+#backgroundImage {
+  background: url(./assets//background.jpeg) no-repeat;
+  height: 100vh;
+  background-size: 2000px;
+  background-attachment: fixed;
+  background-position-y: center;
+  background-position-x: center;
+}
+
+#loginBackground {
+  background-color: #628792e8 !important;
+  width: 100vw;
+  height: 100vh;
+}
+
+#loginContainer {
+  width: 50%;
+  position: absolute;
+  margin: auto;
+  border: 3px solid #4B4544;
+  border-radius: 10px;
+  padding: 50px;
+  background-color: #D4DEDB !important;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#loginHeader {
+  font-family: 'Tangerine', cursive;
+  font-size: 4em;
+}
+
+.loginHR {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.loginButton {
+  margin: 10px;
+}
+
+.fa-10x {
+  margin-bottom: 20px;
+  color: #4B4544;
+}
+
+.border {
+  border-left: 20px solid #4B4544;
+}
+
+#pageBody {
+  background-color: #d4dedbe7;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.card {
+  margin: 2rem !important;
+  border: 1px solid #4B4544 !important;
+  border-radius: 10px !important;
+} 
+
+.row {
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-top: 50px;
+}
+
+.card-body {
+  text-align: left;
+}
+
+.card-title {
+  font-size: 1.5em;
+  color: #628792;
+}
+
+#buttonDiv {
+  text-align: center;
+}
+
+.twoBtns {
+  margin: 20px;
+}
+
+.buttonRowItem {
+  margin: 20px;
+}
+
+#modalHeader {
+  background-color: #628792;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.inputSpacer {
+  margin-bottom: 20px !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#errorMessage {
+  color: red
+}
+
+.fa-star {
+  color: #628792;
+}
+
+.contentBackground {
+  /* margin-top: 75px; */
+  background: url(./assets//map.jpeg) no-repeat;
+  height: 100vh;
+  background-size: 2000px;
+  background-attachment: fixed;
+  background-position-y: center;
+  background-position-x: center;
+}
+
+.navbar {
+  background-color: #628792 !important;
+}
+
+.navButton {
+  margin-right: 3em;
 }
