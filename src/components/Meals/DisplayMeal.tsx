@@ -32,23 +32,22 @@ const DisplayMeal = (props: MealProps) => {
         <div className="contentBackground">
             <div id="pageBody">
                 <h1 id="pageHeader">My Meals</h1>
-                <p>Log your meals...</p>
-                <Button onClick={props.createOn}>Create New Meal</Button>
+                <p>Track a new favorite restaruant or look back on fond meal memories.</p>
+                <Button onClick={props.createOn}>Log New Meal</Button>
                 <Row>
                     {props.meals.map((meal: MealDetails, key:number) => {
                         return(
-                            <Card key={key}>
+                            <Card style={{width: "45%"}} key={key}>
                                 <CardBody>
                                 <h5 className="card-title">{meal.name}</h5>
                                     <CardSubtitle className="mb-2 text-muted">{meal.date}</CardSubtitle>
-                                    <CardText><strong>Location:</strong> {meal.location}</CardText>
+                                    <CardText><strong>Location:</strong> 
+                                        <a href={`https://www.google.com/maps/search/${meal.location}`} target="_blank"> {meal.location}</a>
+                                    </CardText>
                                     <CardText><strong>Thoughts:</strong> {meal.thoughts}</CardText>
-                    
-                                    
                                     <CardText id="starRating"><strong>Rating: </strong>
                                         {props.convertToStars(key)} ({meal.rating} out of 5)
                                     </CardText>
-                                    
                                     <div id="buttonDiv">
                                         <Button className="btn twoBtns" type="button" onClick={() => {props.editUpdateMeal(meal); props.updateOn()}}>Edit Meal</Button>
                                         <Button className="btn btn-danger twoBtns" type="button" onClick={() => {props.deleteMeal(meal.id)}}>Delete Meal</Button>

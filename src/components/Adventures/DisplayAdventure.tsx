@@ -29,25 +29,24 @@ const DisplayAdventure = (props: AdvProps) => {
         <div className="contentBackground">
             <div id="pageBody">
                 <h1 id="pageHeader">My Adventures</h1>
-                <p>Track your adventures...</p>
-                <Button onClick={props.createOn}>Create New Adventure</Button>
+                <p>Track a new adventure, or reminisce through your previous adventures.</p>
+                <p>Need help looking for your next adventure destination? Check out the <a href="https://m4ttholmes-national-parks.web.app/" target="_blank">US National Parks Information Center</a></p>
+                <Button onClick={props.createOn}>Log New Adventure</Button>
                 <Row>
                     {props.adventures.map((adv: AdventureDetails, key:number) => {
                         return(
-                            <Card key={key}>
+                            <Card style={{width: "45%"}} key={key}>
                                 <CardBody>
                                 <h5 className="card-title">{adv.advName}</h5>
                                     <CardSubtitle className="mb-2 text-muted">{adv.actType}</CardSubtitle>
                                     <CardSubtitle className="mb-2 text-muted">{adv.date}</CardSubtitle>
-                                    <CardText><strong>Location:</strong> {adv.location}</CardText>
+                                    <CardText><strong>Location:</strong> 
+                                        <a href={`https://www.google.com/maps/search/${adv.location}`} target="_blank"> {adv.location}</a>
+                                    </CardText>
                                     <CardText><strong>Thoughts:</strong> {adv.thoughts}</CardText>
-
-
                                     <CardText id="starRating"><strong>Rating: </strong>
                                         {props.convertToStars(key)} ({adv.rating} out of 5)
                                     </CardText>
-
-
                                     <div id="buttonDiv">
                                         <Button className="btn twoBtns" type="button" onClick={() => {props.editUpdateAdventure(adv); props.updateOn()}}>Edit Adventure</Button>
                                         <Button className="btn btn-danger twoBtns" type="button" onClick={() => {props.deleteAdventure(adv.id)}}>Delete Adventure</Button>

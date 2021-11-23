@@ -31,6 +31,17 @@ export default class CreateAdventure extends Component<AuthProps, MealDetails> {
         }
     }
 
+    // componentDidMount = () => {
+    //     let cancel = document.getElementById("cancelButton")
+    //     cancel?.addEventListener("click", this.props.createOff)
+    // }
+
+    // componentWillUnmount = () => {
+    //     let cancel = document.getElementById("cancelButton")
+    //     cancel?.removeEventListener("click", this.props.createOff)
+    // }
+
+
     createMeal = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         fetch("http://localhost:5000/meal/create", {
@@ -99,8 +110,8 @@ export default class CreateAdventure extends Component<AuthProps, MealDetails> {
                             </Input>
                         </FormGroup>
                         <div id="buttonDiv">                    
+                            <Button id="cancelButton" className="twoBtns" outline onClick={this.props.createOff}>Cancel</Button>
                             <Button className="twoBtns" type="submit">Create!</Button>
-                            <Button className="twoBtns" outline onClick={this.props.createOff}>Cancel</Button>
                         </div>
                     </Form>
                 </ModalBody>

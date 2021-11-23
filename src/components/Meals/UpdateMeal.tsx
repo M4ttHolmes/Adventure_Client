@@ -71,19 +71,19 @@ export default class UpdateMeal extends Component<AuthProps, MealDetails> {
                     <Form onSubmit={this.updateMeal}>
                         <FormGroup>
                             <Label htmlFor="location">Meal Location</Label>
-                            <Input name="location" type="text" value={this.state.location} onChange={(e) => this.setState({location: (e.target.value)})}/>
+                            <Input className="inputSpacer" name="location" type="text" value={this.state.location} onChange={(e) => this.setState({location: (e.target.value)})}/>
 
                             <Label htmlFor="date">Date</Label>
-                            <Input name="date" type="date" value={this.state.date} onChange={(e) => this.setState({ date: (e.target.value)})}/>
+                            <Input className="inputSpacer" name="date" type="date" value={this.state.date} onChange={(e) => this.setState({ date: (e.target.value)})}/>
 
                             <Label htmlFor="advName">Meal Name</Label>
-                            <Input name="advName" type="text" value={this.state.name} onChange={(e) => this.setState({name: (e.target.value)})}/>
+                            <Input className="inputSpacer" name="advName" type="text" value={this.state.name} onChange={(e) => this.setState({name: (e.target.value)})}/>
 
                             <Label htmlFor="thoughts">Your Thoughts</Label>
-                            <Input name="thoughts" type="textarea" value={this.state.thoughts} onChange={(e) => this.setState({thoughts: (e.target.value)})}/>
+                            <Input className="inputSpacer" name="thoughts" type="textarea" value={this.state.thoughts} onChange={(e) => this.setState({thoughts: (e.target.value)})}/>
 
                             <Label htmlFor="rating">Rating</Label>
-                            <Input name="rating" type="select" value={this.state.rating} onChange={(e) => this.setState({rating: Number((e.target.value))})}>
+                            <Input className="inputSpacer" name="rating" type="select" value={this.state.rating} onChange={(e) => this.setState({rating: Number((e.target.value))})}>
                                 <option hidden>--Rate your Meal--</option>
                                 <option value="1">1 Star - Never Again</option>
                                 <option value="2">2 Stars - Not Great</option>
@@ -93,8 +93,8 @@ export default class UpdateMeal extends Component<AuthProps, MealDetails> {
                             </Input>
                         </FormGroup>
                         <div id="buttonDiv"> 
-                            <Button className="twoBtns"type="submit">Update!</Button>
                             <Button className="twoBtns" outline onClick={this.props.updateOff}>Cancel</Button>
+                            <Button className="twoBtns"type="submit">Update!</Button>
                         </div>
                     </Form>
                 </ModalBody>
