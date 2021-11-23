@@ -5,6 +5,7 @@ import UpdateAdventure from "./UpdateAdventure"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from "prop-types"
+import APIURL from "../../helpers/environment"
 
 type AdventureState = {
     adventures: AdventureDetails[]
@@ -104,7 +105,7 @@ export default class Adventure extends Component<AuthProps, AdventureState> {
 
     fetchMyAdventures = () => {
         console.log("FetchMyAdventures Function Called");
-        fetch("http://localhost:5000/adventure/mine", {
+        fetch(`${APIURL}/adventure/mine`, {
             method: "GET",
             headers: new Headers({
                 "Content-Type": "application/json",
@@ -130,7 +131,7 @@ export default class Adventure extends Component<AuthProps, AdventureState> {
             console.log("DeleteAdventure Function Called");
             console.log(advId);
 
-            fetch(`http://localhost:5000/adventure/${advId}`, {
+            fetch(`${APIURL}/adventure/${advId}`, {
                 method: "DELETE",
                 headers: new Headers({
                     "Content-Type": "application/json",

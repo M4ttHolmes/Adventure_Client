@@ -4,6 +4,7 @@ import CreateMeal from "./CreateMeal"
 import UpdateMeal from "./UpdateMeal"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import APIURL from "../../helpers/environment"
 
 
 type AuthProps = {
@@ -98,7 +99,7 @@ export default class Meal extends Component<AuthProps, MealState> {
 
     fetchMyMeals = () => {
         console.log("FetchMyMeals Function Called");
-        fetch("http://localhost:5000/meal/mine", {
+        fetch(`${APIURL}/meal/mine`, {
             method: "GET",
             headers: new Headers({
                 "Content-Type": "application/json",
@@ -122,7 +123,7 @@ export default class Meal extends Component<AuthProps, MealState> {
             console.log("DeleteAdventure Function Called");
             console.log(mealId);
 
-            fetch(`http://localhost:5000/meal/${mealId}`, {
+            fetch(`${APIURL}/meal/${mealId}`, {
                 method: "DELETE",
                 headers: new Headers({
                     "Content-Type": "application/json",

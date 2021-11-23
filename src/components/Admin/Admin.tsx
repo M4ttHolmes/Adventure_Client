@@ -5,6 +5,7 @@ import DisplayAdminAdv from "./DisplayAdminAdv"
 import DisplayAdminMeals from "./DisplayAdminMeals"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import APIURL from "../../helpers/environment"
 
 
 type AuthProps = {
@@ -59,7 +60,7 @@ export default class Admin extends Component<AuthProps, AdminTypes> {
 
     adminFetchAllUsers = () => {
         console.log("AdminFetchAllUsers Function Called");
-        fetch("http://localhost:5000/user/all", {
+        fetch(`${APIURL}/user/all`, {
             method: "GET",
             headers: new Headers({
                 "Content-Type": "application/json",
@@ -83,7 +84,7 @@ export default class Admin extends Component<AuthProps, AdminTypes> {
             console.log("AdminDeleteUser Function Called");
             console.log(userId);
 
-            fetch(`http://localhost:5000/user/delete/${userId}`, {
+            fetch(`${APIURL}/user/delete/${userId}`, {
                 method: "DELETE",
                 headers: new Headers({
                     "Content-Type": "application/json",
@@ -106,7 +107,7 @@ export default class Admin extends Component<AuthProps, AdminTypes> {
 
     adminFetchAllAdventures = () => {
         console.log("AdminFetchAllAdventures Function Called");
-        fetch("http://localhost:5000/adventure/all", {
+        fetch(`${APIURL}/adventure/all`, {
             method: "GET",
             headers: new Headers({
                 "Content-Type": "application/json",
@@ -130,7 +131,7 @@ export default class Admin extends Component<AuthProps, AdminTypes> {
             console.log("AdminDeleteAdventure Function Called");
             console.log(advId);
 
-            fetch(`http://localhost:5000/adventure/admin/${advId}`, {
+            fetch(`${APIURL}/adventure/admin/${advId}`, {
                 method: "DELETE",
                 headers: new Headers({
                     "Content-Type": "application/json",
@@ -153,7 +154,7 @@ export default class Admin extends Component<AuthProps, AdminTypes> {
 
     adminFetchAllMeals = () => {
         console.log("AdminFetchAllMeals Function Called");
-        fetch("http://localhost:5000/meal/all", {
+        fetch(`${APIURL}/meal/all`, {
             method: "GET",
             headers: new Headers({
                 "Content-Type": "application/json",
@@ -177,7 +178,7 @@ export default class Admin extends Component<AuthProps, AdminTypes> {
             console.log("AdminDeleteMeal Function Called");
             console.log(mealId);
 
-            fetch(`http://localhost:5000/meal/admin/${mealId}`, {
+            fetch(`${APIURL}/meal/admin/${mealId}`, {
                 method: "DELETE",
                 headers: new Headers({
                     "Content-Type": "application/json",

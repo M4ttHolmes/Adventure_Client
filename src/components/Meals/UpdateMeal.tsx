@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Form, FormGroup, ModalHeader, Button, Label, Input, Modal, ModalBody } from 'reactstrap';
+import APIURL from "../../helpers/environment"
 
 type AuthProps = {
     sessionToken: string | undefined | null
@@ -35,8 +36,7 @@ export default class UpdateMeal extends Component<AuthProps, MealDetails> {
 
     updateMeal = (e: React.FormEvent<HTMLFormElement> ) => {
         e.preventDefault();
-        console.log(`http://localhost:5000/meal/update/${this.props.updatedMeal.id}`);
-        fetch(`http://localhost:5000/meal/update/${this.props.updatedMeal.id}`, {
+        fetch(`${APIURL}/meal/update/${this.props.updatedMeal.id}`, {
             method: "PUT",
             body: JSON.stringify({
                 meal: {
