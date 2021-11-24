@@ -80,7 +80,7 @@ export default class UpdateMeal extends Component<AuthProps, MealDetails> {
                             <Input className="inputSpacer" name="advName" type="text" value={this.state.name} onChange={(e) => this.setState({name: (e.target.value)})}/>
 
                             <Label htmlFor="thoughts">Your Thoughts</Label>
-                            <Input className="inputSpacer" name="thoughts" type="textarea" value={this.state.thoughts} onChange={(e) => this.setState({thoughts: (e.target.value)})}/>
+                            <Input className="inputSpacer" name="thoughts" type="textarea" rows="5" value={this.state.thoughts} onChange={(e) => this.setState({thoughts: (e.target.value)})}/>
 
                             <Label htmlFor="rating">Rating</Label>
                             <Input className="inputSpacer" name="rating" type="select" value={this.state.rating} onChange={(e) => this.setState({rating: Number((e.target.value))})}>

@@ -105,7 +105,7 @@ export default class CreateAdventure extends Component<AuthProps, AdvDetails> {
                             <Input className="inputSpacer" required name="location" type="text" value={this.state.location} placeholder="Ex: Denali, Alaska - United States" onChange={(e) => this.setState({location: (e.target.value)})}/>
 
                             <Label htmlFor="thoughts">Your Thoughts</Label>
-                            <Input className="inputSpacer" required name="thoughts" type="textarea" value={this.state.thoughts} placeholder="Use this area to journal your thoughts about this adventure." onChange={(e) => this.setState({thoughts: (e.target.value)})}/>
+                            <Input className="inputSpacer" required name="thoughts" type="textarea" rows="5" value={this.state.thoughts} placeholder="Use this area to journal your thoughts about this adventure." onChange={(e) => this.setState({thoughts: (e.target.value)})}/>
 
                             <Label htmlFor="rating">Rating</Label>
                             <Input className="inputSpacer" required name="rating" type="select" value={this.state.rating} onChange={(e) => this.setState({rating: Number((e.target.value))})}>
