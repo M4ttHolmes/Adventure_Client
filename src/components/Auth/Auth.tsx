@@ -62,29 +62,29 @@ export default class Auth extends Component<AuthProps, AuthState> {
         <div>
             <label htmlFor="email">Email:</label>
             <br/>
-            <input required type="email" id="email" placeholder="Ex: user@email.com" value={this.state.email} onChange={(e) => this.setState({email: (e.target.value)})} />
+            <input className="loginField" required type="email" id="email" placeholder="Ex: user@email.com" value={this.state.email} onChange={(e) => this.setState({email: (e.target.value)})} />
             <br/>
             <label htmlFor="password">Password:</label>
             <br/>
-            <input required type="password" id="password" placeholder="Enter Password" value={this.state.password} onChange={(e) => this.setState({password: (e.target.value)})} />
+            <input className="loginField" required type="password" id="password" placeholder="Enter Password" value={this.state.password} onChange={(e) => this.setState({password: (e.target.value)})} />
             <br/>
             <label htmlFor="firstName">First Name:</label>
             <br/>
-            <input required type='text' id="firstName" placeholder="Your First Name" value={this.state.firstName} onChange={(e) => this.setState({firstName: (e.target.value)})} />
+            <input className="loginField" required type='text' id="firstName" placeholder="Your First Name" value={this.state.firstName} onChange={(e) => this.setState({firstName: (e.target.value)})} />
             <br/>
             <label htmlFor="lastName">Last Name:</label>
             <br/>
-            <input required type='text' id="lastName" placeholder="Your Last Name" value={this.state.lastName} onChange={(e) => this.setState({lastName: (e.target.value)})} />
+            <input className="loginField" required type='text' id="lastName" placeholder="Your Last Name" value={this.state.lastName} onChange={(e) => this.setState({lastName: (e.target.value)})} />
         </div>
     ) : (
         <div>
             <label htmlFor="email">Email:</label>
             <br/>
-            <input required type="email" id="email" placeholder="Ex: user@email.com" value={this.state.email} onChange={(e) => this.setState({email: (e.target.value)})} />
+            <input className="loginField" required type="email" id="email" placeholder="Ex: user@email.com" value={this.state.email} onChange={(e) => this.setState({email: (e.target.value)})} />
             <br/>
             <label htmlFor="password">Password:</label>
             <br/>
-            <input required type="password" id="password" placeholder="Enter Password" value={this.state.password} onChange={(e) => this.setState({password: (e.target.value)})} />
+            <input className="loginField" required type="password" id="password" placeholder="Enter Password" value={this.state.password} onChange={(e) => this.setState({password: (e.target.value)})} />
             <br/>
         </div>
     );

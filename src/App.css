@@ -11,7 +11,17 @@
 
   #loginContainer {
     width: 95% !important;
+    padding: 15px !important;
   }
+  
+  #loginHeader {
+    font-size: 3em !important;
+  }
+
+  .fa-10x {
+    font-size: 6em !important;
+  }
+
 }
 
 .App {
@@ -20,6 +30,10 @@
 
 body {
   font-family: 'Poppins', sans-serif !important;
+}
+
+.loginField {
+  width: 60%;
 }
 
 #pageHeader {
